@@ -1,3 +1,3 @@
 # tesla_cars
 
-color switch for car tesla using library JQuery
+color switch for Tesla Roadster using library JQuery
