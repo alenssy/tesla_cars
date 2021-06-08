@@ -1,0 +1,80 @@
+$base-font-size: 16
+
+@function strip-unit($number)
+    @if type-of($number) == 'number' and not unitless($number) 
+        @return $number / ($number * 0 + 1)
+    @return $number
+
+
+@function to-rem($size, $base: $base-font-size)
+    $pxUnitless: strip-unit($size)
+    @return #{$pxUnitless / $base}rem
+    
+@keyframes hue
+    0%
+        filter: hue-rotate(0deg)
+    100%
+        filter: hue-rotate(-360deg)
+    
+body
+    font-family: 'Montserrat', sans-serif
+
+h1, h3
+    font-size: 1.4375em
+    font-weight: 300
+    margin-top: to-rem(4)
+    line-height: 1
+
+h2
+    font-size: 3.125em
+    margin-top: to-rem(5)
+    font-weight: 500
+    line-height: 1
+    margin-bottom: to-rem(14)
+
+h3
+    color: #f35626
+    animation: hue 1s infinite linear
+
+.logo
+    margin: to-rem(20)
+    width: to-rem(100)
+
+.title
+    text-align: center
+
+.colors
+    display: flex
+    justify-content: center
+    &__name
+        display: block
+        color: #cccccc
+        font-size: 0.9375em
+        font-weight: 500
+        text-transform: capitalize
+        margin: to-rem(20)
+    &__block
+        display: flex
+        flex-direction: column
+        align-items: center
+
+.color__pick
+    cursor: pointer
+    display: inline-block
+    height:  to-rem(35)
+    width:  to-rem(25)
+    margin: 0  to-rem(4)
+    border-radius: 2px
+    transition: box-shadow 0.6s ease
+
+.car__block
+    display: flex
+    justify-content: center
+    width: 65%
+    margin: 0 auto
+    img 
+        display: none
+        width: 100%
+        
+.shadow
+    box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.6)
